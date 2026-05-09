@@ -68,6 +68,9 @@ DATABASES = {
         'PORT': env('DB_PORT'),
 
         'OPTIONS': {
+            'ssl': {
+                'ssl_mode': 'VERIFY_IDENTITY',
+            },
             'charset': 'utf8mb4',
         },
 
