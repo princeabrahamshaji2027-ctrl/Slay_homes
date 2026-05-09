@@ -68,10 +68,11 @@ DATABASES = {
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST'),
         'PORT': env('DB_PORT'),
-        'OPTIONS': {
-            'ssl': {
-                'ssl_mode': 'VERIFY_IDENTITY',
-            },
+'OPTIONS': {
+    'charset': 'utf8mb4',
+    'ssl_disabled': False,
+    'autocommit': True,
+},
             'connect_timeout': 60,
             'read_timeout': 60,
             'write_timeout': 60,
