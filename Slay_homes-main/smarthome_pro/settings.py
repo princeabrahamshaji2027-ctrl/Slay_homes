@@ -79,7 +79,7 @@ DATABASES = {
         },
         'CONN_MAX_AGE': 600,
     }
-}
+
 
 
 # TiDB Specific SSL and Pooling Configuration
