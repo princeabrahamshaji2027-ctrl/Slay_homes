@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Appointment - SmartHome Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c21",
+                        "inverse-primary": "#a4c9ff",
+                        "secondary-fixed": "#6bfad8",
+                        "on-secondary-fixed": "#002019",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006b58",
+                        "tertiary": "#7f5300",
+                        "surface": "#f8f9ff",
+                        "primary-container": "#2976c7",
+                        "on-primary-container": "#fdfcff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005142",
+                        "outline-variant": "#c1c7d3",
+                        "surface-tint": "#0060ac",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3036",
+                        "secondary-fixed-dim": "#48ddbc",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#ecedf5",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#717783",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "on-primary-fixed": "#001c39",
+                        "surface-container-highest": "#e1e2e9",
+                        "surface-bright": "#f8f9ff",
+                        "on-background": "#191c21",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#e6e8ef",
+                        "on-primary-fixed-variant": "#004883",
+                        "on-surface-variant": "#414751",
+                        "error": "#ba1a1a",
+                        "primary": "#005da7",
+                        "tertiary-fixed-dim": "#ffb953",
+                        "surface-variant": "#e1e2e9",
+                        "on-secondary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#67f7d5",
+                        "on-tertiary-container": "#fffbff",
+                        "on-tertiary-fixed": "#291800",
+                        "primary-fixed": "#d4e3ff",
+                        "tertiary-fixed": "#ffddb4",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "on-secondary-container": "#00705c",
+                        "inverse-on-surface": "#eff0f8",
+                        "tertiary-container": "#a06900",
+                        "surface-dim": "#d8dae1",
+                        "surface-container-low": "#f2f3fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "margin": "32px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "md": "24px",
+                        "xl": "64px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h3": ["Inter"],
+                        "h1": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9ff;
+        }
+        .ambient-shadow {
+            box-shadow: 0px 4px 20px rgba(74, 144, 226, 0.08);
+        }
+        .ambient-shadow-hover:hover {
+            box-shadow: 0px 8px 30px rgba(74, 144, 226, 0.12);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface bg-background">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 border-r border-slate-200 bg-white z-50 flex flex-col py-6 px-4 gap-2">
+<div class="mb-8 px-4">
+<h1 class="text-lg font-black text-primary tracking-tight">SmartHome Pro</h1>
+<p class="text-label-sm text-outline uppercase tracking-widest mt-1">Management Portal</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-primary hover:bg-slate-50 transition-all rounded-xl duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-primary rounded-xl border-r-4 border-primary transition-all duration-200 translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-primary hover:bg-slate-50 transition-all rounded-xl duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md">Tasks</span>
+</a>
+<div class="mt-auto pt-8">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-error hover:bg-error-container/10 transition-all rounded-xl duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md">Logout</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen p-margin">
+<!-- Header Section -->
+<header class="mb-lg flex justify-between items-center">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Schedule Service</h2>
+<p class="font-body-md text-outline mt-xs">Select a date and provide details for your upcoming smart home installation.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-base hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img class="object-cover w-full h-full" data-alt="A high-quality professional portrait of a modern user in a bright, airy office or home setting. The lighting is balanced and soft, emphasizing a warm and approachable feeling. The background is a clean, minimalist interior with subtle blue and neutral tones that match the corporate smart home theme. The overall mood is professional, efficient, and friendly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiv6uR7wvqZZSbG6rHjwb0reEHDg5qhojAd7ypxjDGiGUo-JryBcfEICp3lhfu_WGmgJdLbdTt14EmgSzxUULyKwRWFRW18Tajo3ImrDT8MrFnJL5h3guuTXOKSj6ZNk9N4V24DKKkeczYdh6jLG5QwuYo0UC1ZN_A0T9ZR_qwCh7Yt_d_T2U28VTdL8DgMAOk_LLQbtkHaZaAMChHU8O0ENqdonj0MUzM3HN3W90busr4SrHyhdqXZPMsN9k0et8AsD5oG2o5_H0"/>
+</div>
+</div>
+</header>
+<!-- Booking Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Form Details -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-gutter">
+<section class="bg-white rounded-xl p-md ambient-shadow border border-slate-100">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<h3 class="font-h3 text-h3">Client Information</h3>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant ml-1">Phone Number</label>
+<input class="w-full h-12 px-md rounded-xl border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<div class="col-span-2 md:col-span-1 flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant ml-1">Property Type</label>
+<select class="w-full h-12 px-md rounded-xl border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white">
+<option>Residential Villa</option>
+<option>Modern Apartment</option>
+<option>Commercial Office</option>
+<option>Smart Warehouse</option>
+</select>
+</div>
+<div class="col-span-2 flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant ml-1">Service Address</label>
+<textarea class="w-full p-md rounded-xl border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none" placeholder="Street address, unit number, city, and zip code..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<section class="bg-white rounded-xl p-md ambient-shadow border border-slate-100">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<h3 class="font-h3 text-h3">Service Description</h3>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant ml-1">Project Details</label>
+<textarea class="w-full p-md rounded-xl border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none" placeholder="Describe the service needed (e.g., 'House renovation for smart lighting and thermostat installation'). Please include any specific access instructions or preferred brands." rows="6"></textarea>
+</div>
+</section>
+</div>
+<!-- Right Column: Date & Time Picker -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-gutter">
+<section class="bg-white rounded-xl p-md ambient-shadow border border-slate-100">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+</div>
+<h3 class="font-h3 text-h3">Select Date</h3>
+</div>
+<div class="flex gap-xs">
+<button class="p-xs hover:bg-surface-container rounded-lg"><span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span></button>
+<button class="p-xs hover:bg-surface-container rounded-lg"><span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+<!-- Custom Calendar UI -->
+<div class="grid grid-cols-7 gap-xs text-center mb-sm">
+<span class="text-label-sm text-outline font-semibold">SU</span>
+<span class="text-label-sm text-outline font-semibold">MO</span>
+<span class="text-label-sm text-outline font-semibold">TU</span>
+<span class="text-label-sm text-outline font-semibold">WE</span>
+<span class="text-label-sm text-outline font-semibold">TH</span>
+<span class="text-label-sm text-outline font-semibold">FR</span>
+<span class="text-label-sm text-outline font-semibold">SA</span>
+</div>
+<div class="grid grid-cols-7 gap-xs">
+<button class="h-10 text-label-md text-outline-variant hover:bg-surface-container rounded-lg">28</button>
+<button class="h-10 text-label-md text-outline-variant hover:bg-surface-container rounded-lg">29</button>
+<button class="h-10 text-label-md text-outline-variant hover:bg-surface-container rounded-lg">30</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">1</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">2</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">3</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">4</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">5</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">6</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">7</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">8</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">9</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">10</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">11</button>
+<button class="h-10 text-label-md bg-primary text-white font-bold rounded-lg shadow-md shadow-primary/30">12</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">13</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">14</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">15</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">16</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">17</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">18</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">19</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">20</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">21</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">22</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">23</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">24</button>
+<button class="h-10 text-label-md text-on-surface hover:bg-surface-container rounded-lg">25</button>
+</div>
+<div class="mt-md pt-md border-t border-slate-100">
+<h4 class="font-label-md text-on-surface-variant mb-sm">Available Time Slots</h4>
+<div class="flex flex-wrap gap-xs">
+<button class="px-md py-base bg-secondary-container text-on-secondary-container rounded-full text-label-md font-semibold border border-secondary/20 hover:shadow-md transition-all">09:00 AM</button>
+<button class="px-md py-base bg-surface-container text-on-surface-variant rounded-full text-label-md font-medium border border-outline-variant/30 hover:bg-primary-fixed-dim/20 transition-all">10:30 AM</button>
+<button class="px-md py-base bg-surface-container text-on-surface-variant rounded-full text-label-md font-medium border border-outline-variant/30 hover:bg-primary-fixed-dim/20 transition-all">01:00 PM</button>
+<button class="px-md py-base bg-surface-container text-on-surface-variant rounded-full text-label-md font-medium border border-outline-variant/30 hover:bg-primary-fixed-dim/20 transition-all">02:30 PM</button>
+<button class="px-md py-base bg-surface-container text-on-surface-variant rounded-full text-label-md font-medium border border-outline-variant/30 hover:bg-primary-fixed-dim/20 transition-all">04:00 PM</button>
+</div>
+</div>
+</section>
+<!-- Booking Summary / Action Card -->
+<section class="bg-primary text-white rounded-xl p-md ambient-shadow">
+<h3 class="font-h3 text-h3 mb-sm">Ready to book?</h3>
+<p class="text-body-md text-primary-fixed mb-md">Our technicians are certified experts in SmartHome Pro ecosystems. You will receive a confirmation email within 15 minutes.</p>
+<button class="w-full bg-white text-primary py-md rounded-xl font-bold flex items-center justify-center gap-sm hover:bg-primary-fixed transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Book Appointment
+                    </button>
+<p class="text-center text-label-sm text-primary-fixed-dim mt-md flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+                        Secure payment &amp; encrypted data
+                    </p>
+</section>
+<!-- Support Card -->
+<div class="rounded-xl border-2 border-dashed border-outline-variant p-md flex flex-col items-center text-center gap-sm">
+<span class="material-symbols-outlined text-outline text-3xl" data-icon="help">help</span>
+<div>
+<p class="font-label-md text-on-surface">Need help choosing a slot?</p>
+<p class="text-label-sm text-outline">Contact our support line at 1-800-SMART-PRO</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Decor (Subtle Visual Polish) -->
+<div class="fixed bottom-0 right-0 -z-10 opacity-10 pointer-events-none">
+<img class="w-[800px]" data-alt="A large, soft-focus background image featuring abstract fluid shapes in pastel blues and mint greens. The lighting is diffused, creating a serene and modern atmospheric effect that supports a light-mode UI. The style is professional and minimalist, adding a sense of premium depth without distracting from the main content. High-end digital art style with soft color transitions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4SEnij3VUYumtshjTYVA3O47t9fyPLZEgwV2DvylyRym4hGF6K7KT7kisHjY61vXitOIkfzRNPwosFvgpU_AP-uzvzBZ_kq-3SrRhhnR2yXbfE7bkOAVh0eas_CryOsvSxskrWU661-edbhhrifld_3SK8Pw52rQwFLWH5AUGxKQEFh_k4u29NyVrNGYRzrL9S_hXtK6wlnnJ3d-CXXsETU991sTyyXmBArjXrUfUvC2wDUgqMSbtz7pdTBh3pyECMMSTdTVkltM"/>
+</div>
+</main>
+</body></html>

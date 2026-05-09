@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .ambient-shadow {
+        box-shadow: 0px 4px 20px rgba(74, 144, 226, 0.08);
+    }
+    .ambient-shadow-hover:hover {
+        box-shadow: 0px 8px 30px rgba(74, 144, 226, 0.12);
+    }
+</style>
+
+<div class="font-body-md text-white bg-[#0b0b0f] min-h-screen">
+    <!-- Side Navigation Shell -->
+    <aside class="sidebar-container fixed left-0 top-0 h-full border-r border-white/10 bg-[rgba(10,10,10,0.55)] backdrop-blur-lg shadow-2xl flex flex-col py-6 px-4 gap-2 transition-all duration-300">
+        <div class="mb-8 px-4 flex items-center justify-between">
+            <div>
+                <h1 class="text-lg font-black text-primary tracking-tight sidebar-header-title">SLAYHOMES</h1>
+                <p class="text-label-sm text-outline uppercase tracking-widest mt-1 sidebar-header-desc">Management Portal</p>
+            </div>
+            <button onclick="toggleSidebar()" aria-label="Toggle Sidebar" class="p-1 rounded-lg hover:bg-white/10 flex items-center justify-center">
+                <span class="material-symbols-outlined text-gray-400">menu_open</span>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-2">
+            <a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all rounded-xl duration-200" href="{% url 'client:home' %}">
+                <span class="material-symbols-outlined" data-icon="home">home</span>
+                <span class="font-label-md sidebar-text">Home</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-white rounded-xl border-r-4 border-white transition-all duration-200" href="{% url 'client:book_appointment' %}">
+                <span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+                <span class="font-label-md sidebar-text">Appointments</span>
+            </a>
+            <div class="mt-auto pt-8">
+                <a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all rounded-xl duration-200" href="{% url 'logout' %}">
+                    <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    <span class="font-label-md sidebar-text">Logout</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="main-content min-h-screen p-margin">
+        <!-- Header Section -->
+        <header class="mb-lg flex justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div>
+                    <h2 class="font-h2 text-h2 text-white">Schedule Service</h2>
+                    <p class="font-body-md text-gray-400 mt-xs hidden sm:block">Select a date and provide details for your upcoming smart home installation.</p>
+                </div>
+            </div>
+        </header>
+
+        <form method="POST" action="{% url 'client:book_appointment' %}">
+            {% csrf_token %}
+            <!-- Booking Grid Layout -->
+            <div class="grid grid-cols-12 gap-gutter">
+                <!-- Left Column: Form Details -->
+                <div class="col-span-12 lg:col-span-7 flex flex-col gap-gutter">
+                    <section class="bg-[#1a1a1a] rounded-xl p-md ambient-shadow border border-white/5">
+                        <div class="flex items-center gap-sm mb-md">
+                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined" data-icon="person">person</span>
+                            </div>
+                            <h3 class="font-h3 text-h3 text-white">Client Information</h3>
+                        </div>
+                        <div class="grid grid-cols-2 gap-md text-white">
+                            <div class="col-span-2 flex flex-col gap-xs">
+                                <label class="font-label-md text-gray-400 ml-1">Phone Number</label>
+                                {{ form.phone_number }}
+                                {% if form.phone_number.errors %}
+                                    <div class="text-red-500 font-label-sm">{{ form.phone_number.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-span-2 flex flex-col gap-xs">
+                                <label class="font-label-md text-gray-400 ml-1">Service Address</label>
+                                {{ form.address }}
+                                {% if form.address.errors %}
+                                    <div class="text-red-500 font-label-sm">{{ form.address.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-[#1a1a1a] rounded-xl p-md ambient-shadow border border-white/5">
+                        <div class="flex items-center gap-sm mb-md">
+                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined" data-icon="description">description</span>
+                            </div>
+                            <h3 class="font-h3 text-h3 text-white">Service Description</h3>
+                        </div>
+                        <div class="flex flex-col gap-xs text-white">
+                            <label class="font-label-md text-gray-400 ml-1">Project Details</label>
+                            {{ form.description }}
+                            {% if form.description.errors %}
+                                <div class="text-red-500 font-label-sm">{{ form.description.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column: Date & Time Picker -->
+                <div class="col-span-12 lg:col-span-5 flex flex-col gap-gutter">
+                    <section class="bg-[#1a1a1a] rounded-xl p-md ambient-shadow border border-white/5 text-white">
+                        <div class="flex items-center mb-md">
+                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white mr-sm">
+                                <span class="material-symbols-outlined" data-icon="event">event</span>
+                            </div>
+                            <h3 class="font-h3 text-h3 text-white">Select Date & Time</h3>
+                        </div>
+                        
+                        <div class="mb-sm">
+                            <label class="font-label-md text-gray-400 ml-1 mb-xs block">Service Date</label>
+                            {{ form.service_date }}
+                            {% if form.service_date.errors %}
+                                <div class="text-red-500 font-label-sm mt-1">{{ form.service_date.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+ 
+                        <div class="mt-md pt-md border-t border-white/5">
+                            <label class="font-label-md text-gray-400 ml-1 mb-xs block">Service Time</label>
+                            {{ form.service_time }}
+                            {% if form.service_time.errors %}
+                                <div class="text-red-500 font-label-sm mt-1">{{ form.service_time.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                    </section>
+
+                    <!-- Booking Summary / Action Card -->
+                    <section class="bg-white/10 backdrop-blur-xl text-white rounded-xl p-md ambient-shadow border border-white/10">
+                        <h3 class="font-h3 text-h3 mb-sm">Ready to book?</h3>
+                        <p class="text-body-md text-gray-400 mb-md">Our technicians are certified experts in SLAYHOMES ecosystems. You will receive a confirmation email within 15 minutes.</p>
+                        <button type="submit" class="w-full bg-white text-black py-md rounded-xl font-bold flex items-center justify-center gap-sm hover:bg-gray-200 transition-all active:scale-95 shadow-lg shadow-white/5">
+                            <span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Book Appointment
+                        </button>
+                        <p class="text-center text-label-sm text-gray-500 mt-md flex items-center justify-center gap-xs">
+                            <span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+                            Secure payment &amp; encrypted data
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </form>
+
+        <style>
+            input, textarea, select {
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                color: white !important;
+                border-radius: 12px !important;
+                padding: 12px !important;
+            }
+            input:focus, textarea:focus, select:focus {
+                border-color: white !important;
+                outline: none !important;
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
+            }
+        </style>
+
+        <!-- Background Decor (Subtle Visual Polish) -->
+        <div class="fixed bottom-0 right-0 -z-10 opacity-10 pointer-events-none">
+            <img class="w-[800px]" data-alt="..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4SEnij3VUYumtshjTYVA3O47t9fyPLZEgwV2DvylyRym4hGF6K7KT7kisHjY61vXitOIkfzRNPwosFvgpU_AP-uzvzBZ_kq-3SrRhhnR2yXbfE7bkOAVh0eas_CryOsvSxskrWU661-edbhhrifld_3SK8Pw52rQwFLWH5AUGxKQEFh_k4u29NyVrNGYRzrL9S_hXtK6wlnnJ3d-CXXsETU991sTyyXmBArjXrUfUvC2wDUgqMSbtz7pdTBh3pyECMMSTdTVkltM"/>
+        </div>
+    </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInput = document.getElementById('id_service_date');
+    const timeInput = document.getElementById('id_service_time');
+
+    if (dateInput && timeInput) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const todayStr = `${yyyy}-${mm}-${dd}`;
+        dateInput.min = todayStr;
+
+        function updateTimeMin() {
+            if (dateInput.value === todayStr) {
+                const now = new Date();
+                const hh = String(now.getHours()).padStart(2, '0');
+                const min = String(now.getMinutes()).padStart(2, '0');
+                timeInput.min = `${hh}:${min}`;
+            } else {
+                timeInput.min = "";
+            }
+        }
+
+        dateInput.addEventListener('change', updateTimeMin);
+        updateTimeMin();
+    }
+});
+</script>
+{% endblock %}

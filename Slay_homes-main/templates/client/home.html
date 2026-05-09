@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(225, 232, 240, 0.5);
+        box-shadow: 0px 4px 20px rgba(74, 144, 226, 0.08);
+    }
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 24px;
+    }
+</style>
+
+<div class="bg-[#0b0b0f] font-body-md text-white antialiased">
+    <!-- SideNavBar (Shared Component) -->
+    <nav class="sidebar-container fixed left-0 top-0 h-full border-r border-white/10 bg-[rgba(10,10,10,0.55)] backdrop-blur-lg shadow-2xl flex flex-col py-6 px-4 gap-2 transition-all duration-300">
+        <div class="mb-8 px-4 flex items-center justify-between">
+            <div>
+                <h1 class="text-lg font-black text-white tracking-tight sidebar-header-title">SLAYHOMES</h1>
+                <p class="text-label-sm text-gray-400 sidebar-header-desc">Management Portal</p>
+            </div>
+            <button onclick="toggleSidebar()" aria-label="Toggle Sidebar" class="p-1 rounded-lg hover:bg-white/10 flex items-center justify-center">
+                <span class="material-symbols-outlined text-gray-400">menu_open</span>
+            </button>
+        </div>
+        <div class="flex flex-col gap-1">
+            <a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-white rounded-xl border-r-4 border-white font-medium transition-all hover:translate-x-1" href="{% url 'client:home' %}">
+                <span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+                <span class="font-label-md text-label-md sidebar-text">Home</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all hover:translate-x-1 rounded-xl" href="{% url 'client:book_appointment' %}">
+                <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                <span class="font-label-md text-label-md sidebar-text">Appointments</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all hover:translate-x-1 rounded-xl" href="{% url 'client:yours' %}">
+                <span class="material-symbols-outlined" data-icon="list">list</span>
+                <span class="font-label-md text-label-md sidebar-text">Yours</span>
+            </a>
+        </div>
+        <div class="mt-auto pt-4 border-t border-white/10">
+            <a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all rounded-xl" href="{% url 'logout' %}">
+                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                <span class="font-label-md text-label-md sidebar-text">Logout</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Canvas -->
+    <main class="main-content min-h-screen relative z-10">
+        <!-- Header Section -->
+        <header class="absolute top-0 left-0 w-full flex justify-between items-center p-margin z-20 mix-blend-difference">
+            <div class="flex items-center gap-4">
+                <div>
+                    <h1 class="text-3xl font-black text-white mb-2 tracking-tight">Welcome, {{ request.user.get_full_name|default:request.user.username }}</h1>
+                    <p class="text-lg text-gray-300 max-w-2xl font-medium hidden md:block">Manage your smart ecosystem, schedule maintenance, and explore our latest upgrades.</p>
+                </div>
+            </div>
+            <div class="relative">
+                <button id="notification-bell" onclick="document.getElementById('notification-dropdown').classList.toggle('hidden');" class="relative p-2 rounded-full hover:bg-white/10 transition-all text-white">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span id="notification-badge" class="absolute top-0 right-0 bg-error text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-[#1a1a1a] rounded-xl shadow-2xl border border-white/10 z-50 text-white">
+                    <div class="p-3 border-b border-white/10 font-bold">Notifications</div>
+                    <div id="notification-list" class="max-h-64 overflow-y-auto p-2 text-sm text-center text-gray-400">
+                        No notifications yet.
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- React Frontend Canvas -->
+        <div id="react-home-root">
+            <!-- Premium Skeleton Loader (Skull Themed) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-surface-container-highest rounded-2xl p-6 h-48 flex flex-col gap-4 skeleton">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary/30">skull</span>
+                        </div>
+                        <div class="flex-1 space-y-2">
+                            <div class="h-4 bg-surface-container rounded w-3/4"></div>
+                            <div class="h-3 bg-surface-container rounded w-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface-container-highest rounded-2xl p-6 h-48 flex flex-col gap-4 skeleton">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary/30">skull</span>
+                        </div>
+                        <div class="flex-1 space-y-2">
+                            <div class="h-4 bg-surface-container rounded w-3/4"></div>
+                            <div class="h-3 bg-surface-container rounded w-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface-container-highest rounded-2xl p-6 h-48 flex flex-col gap-4 skeleton">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary/30">skull</span>
+                        </div>
+                        <div class="flex-1 space-y-2">
+                            <div class="h-4 bg-surface-container rounded w-3/4"></div>
+                            <div class="h-3 bg-surface-container rounded w-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-lg space-y-4">
+                <div class="h-16 bg-surface-container-highest rounded-xl skeleton opacity-50"></div>
+                <div class="h-16 bg-surface-container-highest rounded-xl skeleton opacity-50"></div>
+                <div class="h-16 bg-surface-container-highest rounded-xl skeleton opacity-50"></div>
+            </div>
+        </div>
+        <script type="module" src="{% static 'frontend/assets/index.js' %}"></script>
+    </main>
+
+    <!-- Floating Action Button (FAB) -->
+    <a href="{% url 'client:book_appointment' %}" class="fixed bottom-margin right-margin bg-secondary-container text-on-secondary-container p-4 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all flex items-center gap-2 z-50">
+        <span class="material-symbols-outlined" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
+        <span class="font-label-md pr-2">Book Service</span>
+    </a>
+</div>
+
+<script>
+    function fetchNotifications() {
+        fetch("{% url 'client:get_notifications' %}")
+            .then(res => res.json())
+            .then(data => {
+                const badge = document.getElementById('notification-badge');
+                const list = document.getElementById('notification-list');
+                const notifications = data.notifications || [];
+                
+                if (notifications.length > 0) {
+                    badge.textContent = notifications.length;
+                    badge.classList.remove('hidden');
+                    list.innerHTML = notifications.map(n => `
+                        <div class="p-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer text-left text-sm" onclick="markRead(${n.id})">
+                            <div class="font-bold text-on-surface mb-1">${n.message}</div>
+                            <div class="text-xs text-outline">${n.created_at}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    badge.classList.add('hidden');
+                    list.innerHTML = '<div class="p-4 text-center text-slate-500 text-sm">No new notifications.</div>';
+                }
+            });
+    }
+
+    function markRead(notifId) {
+        fetch(`/client/notifications/${notifId}/read/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        }).then(() => {
+            window.location.href = "{% url 'client:yours' %}";
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchNotifications();
+        setInterval(fetchNotifications, 30000);
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c21",
+                    "inverse-primary": "#a4c9ff",
+                    "secondary-fixed": "#6bfad8",
+                    "on-secondary-fixed": "#002019",
+                    "on-primary": "#ffffff",
+                    "secondary": "#006b58",
+                    "tertiary": "#7f5300",
+                    "surface": "#f8f9ff",
+                    "primary-container": "#2976c7",
+                    "on-primary-container": "#fdfcff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#005142",
+                    "outline-variant": "#c1c7d3",
+                    "surface-tint": "#0060ac",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2e3036",
+                    "secondary-fixed-dim": "#48ddbc",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#ecedf5",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#717783",
+                    "primary-fixed-dim": "#a4c9ff",
+                    "on-primary-fixed": "#001c39",
+                    "surface-container-highest": "#e1e2e9",
+                    "surface-bright": "#f8f9ff",
+                    "on-background": "#191c21",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e6e8ef",
+                    "on-primary-fixed-variant": "#004883",
+                    "on-surface-variant": "#414751",
+                    "error": "#ba1a1a",
+                    "primary": "#005da7",
+                    "tertiary-fixed-dim": "#ffb953",
+                    "surface-variant": "#e1e2e9",
+                    "on-secondary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "secondary-container": "#67f7d5",
+                    "on-tertiary-container": "#fffbff",
+                    "on-tertiary-fixed": "#291800",
+                    "primary-fixed": "#d4e3ff",
+                    "tertiary-fixed": "#ffddb4",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "on-secondary-container": "#00705c",
+                    "inverse-on-surface": "#eff0f8",
+                    "tertiary-container": "#a06900",
+                    "surface-dim": "#d8dae1",
+                    "surface-container-low": "#f2f3fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin": "32px",
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "lg": "40px",
+                    "base": "8px",
+                    "md": "24px",
+                    "xl": "64px"
+            },
+            "fontFamily": {
+                    "h2": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h3": ["Inter"],
+                    "h1": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ambient-shadow {
+            box-shadow: 0px 4px 20px rgba(74, 144, 226, 0.08);
+        }
+        .ambient-shadow-hover:hover {
+            box-shadow: 0px 8px 30px rgba(74, 144, 226, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- SIDEBAR NAVIGATION -->
+<aside class="fixed left-0 top-0 h-full w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl shadow-blue-500/5 flex flex-col py-6 px-4 gap-2 z-50">
+<div class="mb-8 px-4">
+<h1 class="text-lg font-black text-blue-600 dark:text-blue-400">SmartHome Pro</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Management Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-xl border-r-4 border-blue-600 font-label-md text-label-md transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Tasks</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-error hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="ml-64 min-h-screen p-gutter">
+<!-- TOP APP BAR -->
+<header class="flex items-center justify-between px-6 h-16 w-full mb-8">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h2 class="font-h2 text-h2 text-on-surface">Service Request Details</h2>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-400" data-icon="settings">settings</span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">
+                    AD
+                </div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto grid grid-cols-12 gap-gutter">
+<!-- LEFT COLUMN: REQUEST DETAILS -->
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<!-- BENTO SECTION: PRIMARY INFO -->
+<section class="bg-white rounded-xl ambient-shadow p-md border border-slate-100 grid grid-cols-2 gap-gutter">
+<div class="col-span-2 md:col-span-1 space-y-xs">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Client Name</p>
+<h3 class="font-h3 text-h3 text-on-surface">Eleanor Pemberton</h3>
+<div class="flex items-center gap-2 text-primary font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+<span class="text-label-md">Premium Member</span>
+</div>
+</div>
+<div class="col-span-2 md:col-span-1 space-y-xs">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Scheduled Date &amp; Time</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="event">event</span>
+<p class="font-body-lg text-body-lg">October 24, 2023</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<p class="font-body-lg text-body-lg">02:30 PM - 04:00 PM</p>
+</div>
+</div>
+</section>
+<!-- ASYMMETRIC SECTION: DESCRIPTION & MAP -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-white rounded-xl ambient-shadow p-md border border-slate-100 flex flex-col justify-between">
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-sm">Service Description</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                Installation of Smart Pro Security Hub and 4 external motion-sensing cameras. The client requested integration with their existing Zigbee-compatible smart lighting system and setup of "Away Mode" automation routines. Requires ladders and high-altitude mounting equipment for eaves.
+                            </p>
+</div>
+<div class="mt-md pt-md border-t border-slate-100 flex gap-gutter">
+<div class="flex items-center gap-2 bg-surface-container-low px-sm py-xs rounded-full">
+<span class="material-symbols-outlined text-secondary" data-icon="build">build</span>
+<span class="text-label-sm">Installation</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-sm py-xs rounded-full">
+<span class="material-symbols-outlined text-tertiary" data-icon="priority_high">priority_high</span>
+<span class="text-label-sm">High Priority</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl ambient-shadow overflow-hidden border border-slate-100 h-full min-h-[300px] flex flex-col">
+<div class="p-md bg-white/80 backdrop-blur-sm z-10">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-xs">Service Address</p>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error" data-icon="location_on">location_on</span>
+<p class="font-body-md text-body-md">482 Oakwood Avenue, Maple Ridge Estate<br/>San Francisco, CA 94110</p>
+</div>
+</div>
+<div class="flex-1 relative bg-slate-200">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="A clean, minimalist map interface showing a suburban neighborhood layout in San Francisco with subtle blue and grey color tones. The map is designed for a professional utility dashboard, focusing on clarity, soft shadows, and high contrast markers. The lighting is bright and even, reflecting a modern light-mode design language." data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4ow3qLfD82G_jP8C_rjerfTVocJ2Qo71lmTUtrar0GEUicRfMEDXsuuh4Hzh-3tp7Pb27xpaV9kAx_NomwdL387tXoFtrXgtHV1QltZ9ZnMd0weiSuueP_dlU8w9DY7qEWT3bO81Cn-5gDAVZp7HmLvY44qDc8ipAmbX8_ajdG6JZPaYxBgRgvyL0S0JgKZe8lHH6Ir4PHY3Dw-CSZe-UUMh3NKfHZognKLU-sqC4NKkbTlGSP3fTnE1Zq7F05LD29qUpJbqtMN8"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary text-white p-2 rounded-full shadow-lg ring-4 ring-white/50">
+<span class="material-symbols-outlined" data-icon="home_pin" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home_pin</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: CONTACT & ACTIONS -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- CONTACT CARD -->
+<section class="bg-white rounded-xl ambient-shadow p-md border border-slate-100">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-md">Client Contact</p>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="phone">phone</span>
+<div>
+<p class="text-label-md font-label-md">+1 (555) 012-3456</p>
+<p class="text-xs text-outline">Mobile</p>
+</div>
+</div>
+<button class="p-2 bg-white rounded-full text-primary ambient-shadow hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+<div>
+<p class="text-label-md font-label-md">e.pemberton@gmail.com</p>
+<p class="text-xs text-outline">Personal</p>
+</div>
+</div>
+<button class="p-2 bg-white rounded-full text-primary ambient-shadow hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ACTION BUTTONS -->
+<section class="space-y-sm">
+<button class="w-full py-4 px-6 bg-primary text-on-primary rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+                        Mark as In Progress
+                    </button>
+<button class="w-full py-4 px-6 bg-secondary text-on-secondary rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                        Mark as Completed
+                    </button>
+<div class="grid grid-cols-2 gap-sm">
+<button class="py-3 px-4 border border-outline-variant text-on-surface-variant rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+                            Edit
+                        </button>
+<button class="py-3 px-4 border border-error text-error rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+                            Delete
+                        </button>
+</div>
+</section>
+<!-- NOTES SECTION -->
+<section class="bg-white rounded-xl ambient-shadow p-md border border-slate-100">
+<div class="flex items-center justify-between mb-sm">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Internal Notes</p>
+<button class="text-primary text-xs font-semibold hover:underline">Add Note</button>
+</div>
+<div class="space-y-4">
+<div class="p-sm bg-surface-container-lowest border border-slate-100 rounded-lg">
+<p class="text-xs font-semibold mb-1">System Admin <span class="font-normal text-outline">· 2h ago</span></p>
+<p class="text-sm text-on-surface-variant">Client requested specifically for the 'Jet' colored camera casings to match the eaves.</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- FLOATING ACTION BUTTON (SUPPRESSED AS PER JOURNEY RULES) -->
+<!-- The FAB is suppressed on details pages to prioritize content management and status actions -->
+</body></html>

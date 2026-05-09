@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: slay-homes
+    env: python
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate --noinput && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn smarthome_pro.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DB_HOST
+        value: "gateway01.ap-southeast-1.prod.aws.tidbcloud.com"
+      - key: DB_PORT
+        value: "4000"
+      - key: DB_NAME
+        value: "sys"
+      - key: DB_USER
+        value: "31PQA6ccbXZVYGy.root"
+      - key: DB_PASSWORD
+        sync: false
+      - key: SSL_CA
+        value: "/etc/ssl/cert.pem"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"

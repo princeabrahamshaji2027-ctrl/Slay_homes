@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c21",
+                    "inverse-primary": "#a4c9ff",
+                    "secondary-fixed": "#6bfad8",
+                    "on-secondary-fixed": "#002019",
+                    "on-primary": "#ffffff",
+                    "secondary": "#006b58",
+                    "tertiary": "#7f5300",
+                    "surface": "#f8f9ff",
+                    "primary-container": "#2976c7",
+                    "on-primary-container": "#fdfcff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#005142",
+                    "outline-variant": "#c1c7d3",
+                    "surface-tint": "#0060ac",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2e3036",
+                    "secondary-fixed-dim": "#48ddbc",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#ecedf5",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#717783",
+                    "primary-fixed-dim": "#a4c9ff",
+                    "on-primary-fixed": "#001c39",
+                    "surface-container-highest": "#e1e2e9",
+                    "surface-bright": "#f8f9ff",
+                    "on-background": "#191c21",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e6e8ef",
+                    "on-primary-fixed-variant": "#004883",
+                    "on-surface-variant": "#414751",
+                    "error": "#ba1a1a",
+                    "primary": "#005da7",
+                    "tertiary-fixed-dim": "#ffb953",
+                    "surface-variant": "#e1e2e9",
+                    "on-secondary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "secondary-container": "#67f7d5",
+                    "on-tertiary-container": "#fffbff",
+                    "on-tertiary-fixed": "#291800",
+                    "primary-fixed": "#d4e3ff",
+                    "tertiary-fixed": "#ffddb4",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "on-secondary-container": "#00705c",
+                    "inverse-on-surface": "#eff0f8",
+                    "tertiary-container": "#a06900",
+                    "surface-dim": "#d8dae1",
+                    "surface-container-low": "#f2f3fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin": "32px",
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "lg": "40px",
+                    "base": "8px",
+                    "md": "24px",
+                    "xl": "64px"
+            },
+            "fontFamily": {
+                    "h2": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h3": ["Inter"],
+                    "h1": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(225, 232, 240, 0.5);
+            box-shadow: 0px 4px 20px rgba(74, 144, 226, 0.08);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-full w-64 border-r border-slate-200 bg-white shadow-xl shadow-blue-500/5 z-50 flex flex-col py-6 px-4 gap-2">
+<div class="mb-8 px-4">
+<h1 class="text-lg font-black text-blue-600">SmartHome Pro</h1>
+<p class="text-label-sm text-slate-500">Management Portal</p>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-xl border-r-4 border-blue-600 font-medium transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-blue-500 hover:bg-slate-50 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-blue-500 hover:bg-slate-50 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Tasks</span>
+</a>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-red-500 hover:bg-red-50 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="ml-64 p-margin min-h-screen">
+<!-- Header Section -->
+<header class="flex justify-between items-center mb-xl">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface mb-2">Welcome Home</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">Manage your smart ecosystem, schedule maintenance, and explore our latest upgrades for a truly connected living experience.</p>
+</div>
+<div class="flex gap-gutter">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label-md shadow-md active:scale-95 transition-transform">
+                    Quick Action
+                </button>
+</div>
+</header>
+<!-- Bento Layout Content -->
+<div class="bento-grid">
+<!-- 1. About Us Section (Spans 8 cols) -->
+<section class="col-span-12 lg:col-span-8 glass-card rounded-xl p-md flex flex-col justify-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-h2 text-h2 mb-md text-primary">About Us</h2>
+<p class="text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        At SmartHome Pro, we bridge the gap between complex automation and intuitive human comfort. For over a decade, we have been tailoring bespoke environments that learn from your habits and anticipate your needs. Our service isn't just about hardware; it's about creating a sanctuary where technology disappears and ease of living takes center stage.
+                    </p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 text-secondary font-label-md">
+<span class="material-symbols-outlined">verified</span> Certified Installers
+                        </div>
+<div class="flex items-center gap-2 text-secondary font-label-md">
+<span class="material-symbols-outlined">support_agent</span> 24/7 Monitoring
+                        </div>
+</div>
+</div>
+<!-- Abstract decorative element -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
+</section>
+<!-- Small Hero Visual (Spans 4 cols) -->
+<div class="col-span-12 lg:col-span-4 rounded-xl overflow-hidden h-full min-h-[300px] relative shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A clean and sun-drenched modern living room interior featuring sleek smart home interfaces integrated into the walls. The scene is illuminated by natural golden-hour light streaming through large windows, highlighting a palette of soft whites, pale blues, and warm wood textures. The atmosphere is peaceful, professional, and reflects a high-end minimalist lifestyle focused on technological comfort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgaC7ZwG8MlEN7sw6LgFrqItF2eCXQIpObywt1-quG-L16yZog341ZNYj0SF2VnyKLPNSXFEC86D8w5zMiW7uYXfSab8hNGSCmraXg2-Yy13mDc1A3EaOWoeM9CIrrYvNi_dkdkaskhMpEk902zj3FJmR3vtB0f0fMWm8tNyLTmvNWTP3mDhGogzN72dcLek4a1r7F0WO3d1jKkUMUw1TKKiDpbgFqjnqq24iSaCR9pUdh5I_36yXeC0ro9hJgshEG-xBNi8bWw8I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
+<span class="text-white font-label-md bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">Premier Partner</span>
+</div>
+</div>
+<!-- 2. Previous Works Section (Spans Full Width) -->
+<section class="col-span-12 mt-base">
+<div class="flex items-center justify-between mb-gutter">
+<h2 class="font-h3 text-h3 text-on-surface">Previous Works</h2>
+<button class="text-primary font-label-md hover:underline">View Portfolio</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Before/After Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="flex h-64 overflow-hidden">
+<div class="w-1/2 relative">
+<img class="w-full h-full object-cover" data-alt="A cluttered and dimly lit traditional basement utility room with tangled wires and old electrical panels. The image uses a cool, shadowy lighting scheme to emphasize the outdated and disorganized state of the home's original infrastructure. This 'before' shot serves as a dramatic contrast to modern smart home upgrades." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9BaUefCQX2bKjUYgTJ_UxDbvbyr8rkoHKHgM4BG-tF9mgy8IbPXgzk30wOlmlWKP56CiqYNPc1M1-fMnAkjozMM_V20150eST3dw2jlvMwQ7MEs07JbM6TwDvv9BandMfk6NaFUAA04_ivon8z52ZxVxeGH1ZMB0_3Bo01CGTHBLuzM6VpoUXzLzpFiNzbno_MwoYdhwCVV2HkdYMdmqwnsOUi1_8FjjsV8PPUa37_ZoU7InKgxMKElmwrS6KxViR1BkR4ZVr5aQ"/>
+<span class="absolute top-4 left-4 bg-on-surface text-white text-xs px-2 py-1 rounded font-bold uppercase tracking-widest">Before</span>
+</div>
+<div class="w-1/2 relative border-l-2 border-white">
+<img class="w-full h-full object-cover" data-alt="The same utility space transformed into a clean, futuristic server room with organized racks, glowing blue LED indicators, and pristine white paneling. The lighting is crisp and even, highlighting a high-tech and efficient atmosphere. The aesthetic is modern and professional, aligning with a premium smart home automation brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCNucHmWDxcUM_CTLBuKis_3AB8fvSqnpaE3RLtFoSkdKHT-TZFyyOJe6_zT1zD4gfqXDTfAPF0xX3F4aVhtfMk9aRkd9qDDykfZTEeir3Rp-CQuC5Q3vRpPLOwj0TLEULOs55fuuGtVInF_YkbY3iwzSTeELV1HdunJJum30Zow6mMIcGR-EZoHlFz6Cz-0-MSSbBB1KPCE3nd9AdRIE-M0Kao9PhILH2MJ4pxMz9FNsdHdeX2nWwe1ZTgjlPrHmiG7be_iFk2Wg"/>
+<span class="absolute top-4 left-4 bg-secondary text-white text-xs px-2 py-1 rounded font-bold uppercase tracking-widest">After</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-label-md text-on-surface mb-xs">Central Hub Integration</h3>
+<p class="text-label-sm text-on-surface-variant">Residential project in Palo Alto focused on streamlining legacy wiring into a unified central controller.</p>
+</div>
+</div>
+<!-- Before/After Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="flex h-64 overflow-hidden">
+<div class="w-1/2 relative">
+<img class="w-full h-full object-cover" data-alt="A generic kitchen with basic lighting fixtures and standard switches. The lighting is yellow and inconsistent, creating a dated and unremarkable interior feel. The composition is focused on the wall interfaces and lack of atmosphere typical of older residential properties." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQEG11mLnLjm_jy1aF6vzJKzfwLAvAO4T-Vesr8Cuhps9w3-AiHXZQ43HsJGFSJViCswIk2wchKfwPQ_A0l275BmeVE0Q-XAQTq4z6zKP7jlCRGNjI1rOfUNCplzJqlCL043m2QzlwMlIiJbDEyxz5cSOwoiHvQyqNy5_Ps6ct5n3W88eop2KykCcmsY_5Ams8YSxbj1gABl0vqQQR8CUIfQPmIOuScOl_yrUMPWvzBcWR6CtpNNcwXETS5-EqaHyaY2o1ZLhjs8I"/>
+<span class="absolute top-4 left-4 bg-on-surface text-white text-xs px-2 py-1 rounded font-bold uppercase tracking-widest">Before</span>
+</div>
+<div class="w-1/2 relative border-l-2 border-white">
+<img class="w-full h-full object-cover" data-alt="A luxury smart kitchen featuring invisible ceiling speakers, voice-controlled cove lighting in soft mint and warm white, and a sleek tablet interface mounted on a quartz wall. The lighting is perfectly balanced, showcasing a calm and sophisticated lifestyle upgrade. The visual style is airy, light-mode, and highly modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnu3yI5_VnJ4GR-apuF3FfsyOiQuLjyfq8ff5zDu-dClQwqRQlcxfJHpa3LAz-eN67R9d06M05HRjJn6DQE95EeuxMcZhNihPJaaZgpI3xz5FE2UKnmcGil0_4eg_BxVt5ZFaynN5iWwOQT3rvPkvpnDeVQOzDf9Y2orpjxmKaHeMsL_52pn5W8OTJNwznsy7qy6WK4PxeNmOAc0IndYId0e9fKb0LDwAd5CvRRaKKR8TylF2V1O2l3fHWOXM3gjl0LDNbImX81v0"/>
+<span class="absolute top-4 left-4 bg-secondary text-white text-xs px-2 py-1 rounded font-bold uppercase tracking-widest">After</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-label-md text-on-surface mb-xs">Kitchen Ambience Overhaul</h3>
+<p class="text-label-sm text-on-surface-variant">Adaptive lighting and multi-zone audio installation for a family-centric open kitchen space.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Customer Reviews Section (Spans Full Width) -->
+<section class="col-span-12 mt-gutter">
+<h2 class="font-h3 text-h3 text-on-surface mb-gutter">Customer Reviews</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Review 1 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-4">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-body-md italic text-on-surface-variant">"The transition to a smart home was seamless. The team was professional, and the 'Scenes' feature has completely changed how we start our mornings."</p>
+<div class="flex items-center gap-3 mt-auto pt-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">JD</div>
+<div>
+<p class="text-label-md text-on-surface">James D.</p>
+<p class="text-label-sm text-slate-400">Homeowner</p>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-4 border-t-4 border-t-primary">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-body-md italic text-on-surface-variant">"SmartHome Pro managed to modernize our 1920s bungalow without compromising its original charm. Truly a thoughtful design approach."</p>
+<div class="flex items-center gap-3 mt-auto pt-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">SL</div>
+<div>
+<p class="text-label-md text-on-surface">Sarah L.</p>
+<p class="text-label-sm text-slate-400">Interior Designer</p>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-4">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star_half</span>
+</div>
+<p class="text-body-md italic text-on-surface-variant">"Exceptional support. When I had trouble with the network after a power outage, they were on it within minutes. Best customer service in the tech space."</p>
+<div class="flex items-center gap-3 mt-auto pt-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-bold">MK</div>
+<div>
+<p class="text-label-md text-on-surface">Mark K.</p>
+<p class="text-label-sm text-slate-400">Tech Lead</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-margin right-margin bg-secondary-container text-on-secondary-container p-4 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all flex items-center gap-2 z-50">
+<span class="material-symbols-outlined" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="font-label-md pr-2">Book Service</span>
+</button>
+</body></html>
