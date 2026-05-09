@@ -68,11 +68,7 @@ DATABASES = {
         'PORT': env('DB_PORT'),
 
         'OPTIONS': {
-            'ssl': {
-                'ca': env('SSL_CA', default='/etc/ssl/cert.pem')
-            },
             'charset': 'utf8mb4',
-            'autocommit': True,
         },
 
         'CONN_MAX_AGE': 600,
