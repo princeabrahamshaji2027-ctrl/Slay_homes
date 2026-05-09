@@ -1,3 +1,14 @@
+import os
+from pathlib import Path
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # TiDB Database Configuration
 DATABASES = {
     'default': {
@@ -9,21 +20,16 @@ DATABASES = {
         'PORT': env('DB_PORT'),
 
         'OPTIONS': {
-            'charset': 'utf8mb4',
-            'autocommit': True,
             'ssl': {
                 'ca': env('SSL_CA', default='/etc/ssl/cert.pem')
             },
-            'connect_timeout': 60,
-            'read_timeout': 60,
-            'write_timeout': 60,
+            'charset': 'utf8mb4',
+            'autocommit': True,
         },
 
         'CONN_MAX_AGE': 600,
-        'DISABLE_SERVER_SIDE_CURSORS': True,
     }
 }
-
 # Production Security Settings
 
 DEBUG = False
