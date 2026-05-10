@@ -43,10 +43,12 @@
             </a>
         </div>
         <div class="mt-auto pt-4 border-t border-white/10">
+            {% if request.user.is_authenticated %}
             <a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all rounded-xl" href="{% url 'logout' %}">
                 <span class="material-symbols-outlined" data-icon="logout">logout</span>
                 <span class="font-label-md text-label-md sidebar-text">Logout</span>
             </a>
+            {% endif %}
         </div>
     </nav>
 
@@ -56,11 +58,16 @@
         <header class="absolute top-0 left-0 w-full flex justify-between items-center p-margin z-20 mix-blend-difference">
             <div class="flex items-center gap-4">
                 <div>
+                    {% if request.user.is_authenticated %}
                     <h1 class="text-3xl font-black text-white mb-2 tracking-tight">Welcome, {{ request.user.get_full_name|default:request.user.username }}</h1>
+                    {% else %}
+                    <h1 class="text-3xl font-black text-white mb-2 tracking-tight">Welcome to SLAYHOMES</h1>
+                    {% endif %}
                     <p class="text-lg text-gray-300 max-w-2xl font-medium hidden md:block">Manage your smart ecosystem, schedule maintenance, and explore our latest upgrades.</p>
                 </div>
             </div>
-            <div class="relative">
+            <div class="relative flex items-center gap-4">
+                {% if request.user.is_authenticated %}
                 <button id="notification-bell" onclick="document.getElementById('notification-dropdown').classList.toggle('hidden');" class="relative p-2 rounded-full hover:bg-white/10 transition-all text-white">
                     <span class="material-symbols-outlined">notifications</span>
                     <span id="notification-badge" class="absolute top-0 right-0 bg-error text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
@@ -71,6 +78,15 @@
                         No notifications yet.
                     </div>
                 </div>
+                <a href="{% url 'client:yours' %}" class="p-2 rounded-full hover:bg-white/10 transition-all text-white" aria-label="Profile">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="flex items-center gap-2 p-2 rounded-full hover:bg-white/10 transition-all text-white font-medium">
+                    <span class="material-symbols-outlined">login</span>
+                    <span class="hidden md:inline">Login</span>
+                </a>
+                {% endif %}
             </div>
         </header>
 
@@ -130,6 +146,7 @@
 
 <script>
     function fetchNotifications() {
+        {% if request.user.is_authenticated %}
         fetch("{% url 'client:get_notifications' %}")
             .then(res => res.json())
             .then(data => {
@@ -151,9 +168,11 @@
                     list.innerHTML = '<div class="p-4 text-center text-slate-500 text-sm">No new notifications.</div>';
                 }
             });
+        {% endif %}
     }
 
     function markRead(notifId) {
+        {% if request.user.is_authenticated %}
         fetch(`/client/notifications/${notifId}/read/`, {
             method: 'POST',
             headers: {
@@ -162,11 +181,14 @@
         }).then(() => {
             window.location.href = "{% url 'client:yours' %}";
         });
+        {% endif %}
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        {% if request.user.is_authenticated %}
         fetchNotifications();
         setInterval(fetchNotifications, 30000);
+        {% endif %}
     });
 </script>
 {% endblock %}

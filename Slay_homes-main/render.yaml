@@ -14,12 +14,12 @@ services:
       - key: DB_PORT
         value: "4000"
       - key: DB_NAME
-        value: "sys"
+        value: "slayhomes"
       - key: DB_USER
-        value: "31PQA6ccbXZVYGy.root"
+        value: "31PQA6ccbXZYvGy.root"
       - key: DB_PASSWORD
         sync: false
       - key: SSL_CA
-        value: "/etc/ssl/cert.pem"
+        value: "/etc/ssl/certs/ca-certificates.crt"
       - key: ALLOWED_HOSTS
-        value: ".onrender.com"
+        value: ".onrender.com,localhost,127.0.0.1"

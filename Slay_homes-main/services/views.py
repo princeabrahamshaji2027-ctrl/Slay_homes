@@ -40,8 +40,6 @@ def mark_notification_read(request, notif_id):
         return JsonResponse({'status': 'ok'})
     return JsonResponse({'status': 'error'})
 
-@login_required
-@role_required('client')
 def client_home(request):
     return render(request, 'client/home.html')
 

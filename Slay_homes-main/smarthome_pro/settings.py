@@ -57,6 +57,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "smarthome_pro.wsgi.application"
 
+# Auto-detect SSL CA
+import os
+def get_ssl_ca():
+    ca_path = env('SSL_CA', default='')
+    if ca_path and os.path.exists(ca_path):
+        return ca_path
+    
+    # Fallbacks for Render (Ubuntu) vs Mac
+    for fallback in ['/etc/ssl/certs/ca-certificates.crt', '/etc/ssl/cert.pem']:
+        if os.path.exists(fallback):
+            return fallback
+    return None
+
 # TiDB Database Configuration
 DATABASES = {
     'default': {
@@ -69,33 +82,38 @@ DATABASES = {
 
         'OPTIONS': {
             'ssl': {
+                'ca': get_ssl_ca(),
                 'ssl_mode': 'VERIFY_IDENTITY',
             },
             'charset': 'utf8mb4',
+            'connect_timeout': 10,
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
 
         'CONN_MAX_AGE': 600,
+        'CONN_HEALTH_CHECKS': True,
     }
 }
 # Production Security Settings
 
-DEBUG = False
+DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = [
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[
     '.onrender.com',
     '127.0.0.1',
     'localhost',
-]
+])
 
-CSRF_TRUSTED_ORIGINS = [
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[
     "https://slay-homes.onrender.com",
     "https://*.onrender.com",
-]
+])
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=True)
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=True)
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') if SECURE_SSL_REDIRECT else None
+
 
 
 AUTH_PASSWORD_VALIDATORS = [

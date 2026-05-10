@@ -16,8 +16,8 @@ def health_check(request):
 urlpatterns = [
     path('health/', health_check),
     path('admin/', admin.site.urls),
-    path('', include('accounts.urls')),
-    path('client/', include('services.client_urls', namespace='client')),
+    path('accounts/', include('accounts.urls')),
+    path('', include('services.client_urls', namespace='client')),
     path('admin-panel/', include('services.admin_urls', namespace='admin_panel')),
 ]
 
